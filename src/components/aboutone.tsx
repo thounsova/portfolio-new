@@ -1,11 +1,3 @@
-import React from "react";
-// Assuming Font Awesome icons are available or you will provide an alternative if react-icons/fa is not directly supported
-// For this environment, we'll use inline SVGs or placeholders if FaCode, FaPaintBrush, FaRocket aren't pre-imported.
-// If react-icons is available in your environment, keep the import as is.
-// Otherwise, replace with SVG or other icon solutions.
-
-// Placeholder for icons if react-icons/fa is not directly supported in the environment.
-// In a real React app with npm/yarn, you'd install react-icons.
 const FaCode = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"

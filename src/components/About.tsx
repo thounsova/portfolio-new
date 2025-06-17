@@ -1,6 +1,4 @@
-import { Link as ScrollLink } from "react-scroll/modules";
 import bgImage from "../assets/bgpattern3.png";
-import aboutImage from "../assets/images/about-image2.png";
 
 function About() {
   return (
