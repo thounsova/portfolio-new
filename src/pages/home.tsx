@@ -3,7 +3,7 @@ import Contact from "../components/Contact/Contact";
 import Footer from "../components/Footer/Footer";
 import Nav from "../components/Header/Navbar";
 import Hero from "../components/Hero";
-import Projects from "../components/Projects";
+// import Projects from "../components/Projects";
 import Qualification from "../components/Qualification";
 import Tow from "../components/project-two";
 
@@ -26,7 +26,7 @@ function HomePage() {
         <Skills />
         <Card />
 
-        <Projects />
+        {/* <Projects /> */}
         <Tow />
         <Qualification />
         <div className="mt-20">
