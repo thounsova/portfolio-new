@@ -4,6 +4,8 @@ import { Link as ScrollLink } from "react-scroll/modules";
 import burgerAnimation from "../../assets/burger-menu-animation.json";
 
 const navLinks = [
+  { title: "About", link: "about", id: 0 },
+  { title: "Skills", link: "Skills", id: 1 },
   { title: "Projects", link: "projects", id: 2 },
   { title: "Contact", link: "contact", id: 4 },
 ];
@@ -56,7 +58,7 @@ const Navbar = () => {
               isOpen ? "max-h-screen" : "max-h-0"
             }`}
           >
-            <ul className="flex flex-col md:flex-row items-center justify-center md:space-x-6 pb-4 md:pb-0">
+            <ul className="md:flex md:space-x-6 md:space-y-0 pb-4 md:pb-0">
               {navLinks.map((item) => (
                 <li key={item.id}>
                   <ScrollLink
