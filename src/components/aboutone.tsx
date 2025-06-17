@@ -41,7 +41,7 @@ export default function AboutMe() {
   return (
     <section
       id="about"
-      className="relative z-10 px-6 py-16 text-white overflow-hidden bg-gray-900" // Added a background color for consistency
+      className="relative z-10 px-6 py-16 text-white overflow-hidden " // Added a background color for consistency
     >
       {/* Background Colorful Blur Circles */}
       <div

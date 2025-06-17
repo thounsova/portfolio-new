@@ -106,7 +106,7 @@ const App = () => {
 
   return (
     <div className="min-h-screen w-full  flex items-center justify-center p-4 sm:p-8 font-inter">
-      <div className="container mx-auto p-6 bg-gray-800 rounded-xl shadow-2xl relative overflow-hidden">
+      <div className="container mx-auto p-6  rounded-xl shadow-2xl relative overflow-hidden">
         {/* Background elements for visual effect */}
         <div className="absolute top-0 left-0 w-48 h-48 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-full opacity-20 filter blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
         <div className="absolute bottom-0 right-0 w-64 h-64 bg-gradient-to-tl from-green-500 to-teal-600 rounded-full opacity-20 filter blur-3xl translate-x-1/2 translate-y-1/2"></div>
