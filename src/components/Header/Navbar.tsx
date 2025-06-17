@@ -15,32 +15,43 @@ const Navbar = () => {
   const lottieRef = useRef<LottieRefCurrentProps>(null);
 
   const toggleMenu = () => {
-    setIsOpen(!isOpen);
-    isOpen
-      ? lottieRef.current?.playSegments([60, 25], true)
-      : lottieRef.current?.playSegments([25, 60], true);
+    setIsOpen((prev) => {
+      const nextState = !prev;
+      if (nextState) {
+        lottieRef.current?.playSegments([25, 60], true); // open
+      } else {
+        lottieRef.current?.playSegments([60, 25], true); // close
+      }
+      return nextState;
+    });
+  };
+
+  const handleMobileLinkClick = () => {
+    if (isOpen) toggleMenu();
   };
 
   return (
-    <div className="sticky top-0 z-50 w-full">
-      <nav className="backdrop-blur-md bg-white/10 border border-white/20 shadow-lg rounded-xl justify-between md:items-center md:flex max-w-3xl md:max-w-5xl mx-auto px-4 mt-4 transition-all duration-300">
-        <div className="flex items-center justify-between py-3 md:py-3 md:block">
-          <div className="md:py-3 md:block">
-            <h2 className="text-2xl font-bold text-white">
-              <ScrollLink
-                to="home"
-                smooth={true}
-                duration={500}
-                className="cursor-pointer"
-              >
-                <span className=" font-bold mb-3 bg-gradient-to-r from-blue-400 to-pink-500 text-transparent bg-clip-text">
-                  I'm REACH
-                </span>{" "}
-              </ScrollLink>
-            </h2>
-          </div>
+    <header className="sticky top-0 z-50 w-full px-4 mt-4">
+      <nav className="max-w-5xl mx-auto bg-white/10 backdrop-blur-md border border-white/20 shadow-lg rounded-xl transition-all duration-300">
+        {/* Top Row */}
+        <div className="flex items-center justify-between py-3 md:px-6 px-2">
+          {/* Logo */}
+          <h2 className="text-2xl font-bold text-white">
+            <ScrollLink
+              to="home"
+              smooth={true}
+              duration={500}
+              className="cursor-pointer"
+            >
+              <span className="bg-gradient-to-r from-blue-400 to-pink-500 text-transparent bg-clip-text">
+                I'm REACH
+              </span>
+            </ScrollLink>
+          </h2>
+
+          {/* Mobile Menu Button */}
           <button
-            className="p-2 text-gray-200 rounded-md outline-none md:hidden"
+            className="md:hidden p-2 text-gray-200 rounded-md"
             onClick={toggleMenu}
           >
             <Lottie
@@ -52,34 +63,34 @@ const Navbar = () => {
             />
           </button>
         </div>
-        <div>
-          <div
-            className={`flex-1 justify-self-center md:block md:pb-0 md:mt-0 overflow-hidden transition-all duration-700 md:max-h-screen ${
-              isOpen ? "max-h-screen" : "max-h-0"
-            }`}
-          >
-            <ul className="md:flex md:space-x-6 md:space-y-0 pb-4 md:pb-0">
-              {navLinks.map((item) => (
-                <li key={item.id}>
-                  <ScrollLink
-                    to={item.link}
-                    className="block lg:inline-block bg-gradient-to-r from-blue-400 to-pink-500 text-transparent bg-clip-text hover:text-gray-400 cursor-pointer transition p-2 md:p-0"
-                    activeClass="active"
-                    spy={true}
-                    smooth={true}
-                    offset={-100}
-                    duration={500}
-                    onClick={toggleMenu}
-                  >
-                    {item.title}
-                  </ScrollLink>
-                </li>
-              ))}
-            </ul>
-          </div>
+
+        {/* Links */}
+        <div
+          className={`overflow-hidden transition-all duration-500 md:block ${
+            isOpen ? "max-h-64" : "max-h-0"
+          } md:max-h-full`}
+        >
+          <ul className="flex flex-col md:flex-row items-center justify-center md:space-x-6 md:py-2">
+            {navLinks.map((item) => (
+              <li key={item.id} className="w-full md:w-auto text-center">
+                <ScrollLink
+                  to={item.link}
+                  className="block py-2 px-3 bg-gradient-to-r from-blue-400 to-pink-500 text-transparent bg-clip-text hover:text-gray-300 cursor-pointer transition"
+                  activeClass="active"
+                  spy={true}
+                  smooth={true}
+                  offset={-100}
+                  duration={500}
+                  onClick={handleMobileLinkClick}
+                >
+                  {item.title}
+                </ScrollLink>
+              </li>
+            ))}
+          </ul>
         </div>
       </nav>
-    </div>
+    </header>
   );
 };
 
