@@ -201,7 +201,7 @@ const App = () => {
           Interactive Skills Overview
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {skills.map((skill, index) => (
             <SkillCard key={index} {...skill} />
           ))}
