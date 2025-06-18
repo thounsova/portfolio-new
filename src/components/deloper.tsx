@@ -1,8 +1,7 @@
 import React from "react";
 
-// Define an interface for the StackCategory props
 interface StackCategoryProps {
-  icon: React.ReactNode; // Can be an SVG or an emoji
+  icon: React.ReactNode;
   title: string;
   items: string[];
 }
@@ -13,16 +12,16 @@ const StackCategory: React.FC<StackCategoryProps> = ({
   items,
 }) => {
   return (
-    <div className="flex flex-col items-center p-6 bg-gray-800 rounded-xl shadow-lg text-white transform transition duration-300 hover:scale-105">
-      <div className="mb-4 text-4xl">{icon}</div>
-      <h3 className="text-xl font-semibold mb-6 text-center">{title}</h3>
+    <div className="flex flex-col items-center p-6 bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl shadow-xl text-white transition duration-300 hover:scale-[1.03] hover:shadow-teal-500/30">
+      <div className="mb-4 text-5xl">{icon}</div>
+      <h3 className="text-xl font-bold mb-6 text-center">{title}</h3>
       <div className="w-full space-y-3">
         {items.map((item, index) => (
           <button
             key={index}
-            className="w-full py-3 px-4 rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium shadow-md
-                       hover:from-purple-700 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50
-                       transition duration-200 ease-in-out transform hover:-translate-y-0.5 active:scale-95"
+            className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-indigo-500 via-purple-600 to-pink-500 text-white font-medium shadow-md
+                       hover:from-indigo-600 hover:to-pink-600 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-opacity-50
+                       transition-all duration-200 ease-in-out transform hover:-translate-y-0.5 active:scale-95"
           >
             {item}
           </button>
@@ -35,43 +34,32 @@ const StackCategory: React.FC<StackCategoryProps> = ({
 const App = () => {
   const categories: StackCategoryProps[] = [
     {
-      icon: (
-        <span role="img" aria-label="palette">
-          🎨
-        </span>
-      ), // Palette emoji
+      icon: <span role="img" aria-label="palette">🎨</span>,
       title: "Frontend Development",
       items: ["React", "Vue.js", "Solid", "Svelte"],
     },
     {
-      icon: (
-        <span role="img" aria-label="gear">
-          ⚙️
-        </span>
-      ), // Gear emoji
+      icon: <span role="img" aria-label="gear">⚙️</span>,
       title: "Backend Development",
       items: ["Node.js", "Python", "Java", "Rust"],
     },
     {
-      icon: (
-        <span role="img" aria-label="tools">
-          🛠️
-        </span>
-      ), // Tools emoji
+      icon: <span role="img" aria-label="tools">🛠️</span>,
       title: "Tools & DevOps",
       items: ["Docker", "AWS", "Git", "CI/CD"],
     },
   ];
 
   return (
-    <div className="min-h-screen flex items-center justify-center  sm:p-8 font-inter">
-      <div className="container mx-auto p-6 bg-gray-800 rounded-xl shadow-2xl relative overflow-hidden">
-        {/* Background elements for visual effect */}
-        <div className="absolute top-0 left-0 w-48 h-48 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-full opacity-20 filter blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
-        <div className="absolute bottom-0 right-0 w-64 h-64 bg-gradient-to-tl from-green-500 to-teal-600 rounded-full opacity-20 filter blur-3xl translate-x-1/2 translate-y-1/2"></div>
-        <div className="absolute top-1/2 left-1/2 w-56 h-56 bg-gradient-to-tr from-cyan-400 to-blue-500 rounded-full opacity-15 filter blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+    <div className="min-h-screen flex items-center justify-center bg-[#0f172a] px-4 sm:px-8 font-inter relative overflow-hidden">
+      {/* Soft blur color blobs */}
+      <div className="absolute top-0 left-0 w-72 h-72 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-full opacity-20 blur-[100px] -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-green-400 to-teal-500 rounded-full opacity-20 blur-[100px] translate-x-1/2 translate-y-1/2 pointer-events-none"></div>
+      <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-gradient-to-tr from-sky-400 to-blue-600 rounded-full opacity-15 blur-[100px] -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
 
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-center text-white mb-10 tracking-wide">
+      {/* Content Container */}
+      <div className="container max-w-7xl mx-auto p-6 md:p-10 backdrop-blur-sm bg-white/5 border border-white/10 rounded-3xl shadow-2xl z-10">
+        <h2 className="text-4xl sm:text-5xl font-extrabold text-center text-white mb-12 tracking-wide">
           Development Stacks
         </h2>
 

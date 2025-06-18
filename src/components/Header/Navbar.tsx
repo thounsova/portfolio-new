@@ -1,7 +1,6 @@
 import Lottie, { LottieRefCurrentProps } from "lottie-react";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import { Link as ScrollLink } from "react-scroll/modules";
-import { BsMoon, BsSun } from "react-icons/bs";
 import burgerAnimation from "../../assets/burger-menu-animation.json";
 
 const navLinks = [
@@ -11,7 +10,6 @@ const navLinks = [
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
   const lottieRef = useRef<LottieRefCurrentProps>(null);
 
   const toggleMenu = () => {
@@ -21,41 +19,30 @@ const Navbar = () => {
       : lottieRef.current?.playSegments([25, 60], true);
   };
 
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
-
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [darkMode]);
-
   return (
-    <div className="sticky top-0 z-50 w-full">
-      <nav className="backdrop-blur-md bg-white/10 dark:bg-black/20 border border-white/20 shadow-md rounded-xl max-w-6xl mx-auto px-6 py-3 mt-4 flex items-center justify-between transition-all duration-300">
+    <header className="sticky top-0 z-50 w-full bg-transparent">
+      <nav className="backdrop-blur-md bg-white/20 dark:bg-black/30 border border-white/30 dark:border-black/50 shadow-md rounded-xl max-w-6xl mx-auto px-6 sm:px-8 py-4 mt-4 flex items-center justify-between transition-all duration-300">
         {/* Logo */}
         <ScrollLink
           to="home"
           smooth={true}
           duration={500}
-          className="cursor-pointer"
+          className="cursor-pointer flex-shrink-0"
+          aria-label="Go to home"
         >
-          <h1 className="text-xl font-bold bg-gradient-to-r from-blue-400 to-pink-500 text-transparent bg-clip-text">
-            I'm REACH
+          <h1 className="text-xl text-white sm:text-2xl font-extrabold bg-gradient-to-r bg-clip-text select-none">
+          Na <span className=" from-blue-400 font-extrabold bg-gradient-to-r bg-clip-text select-none to-pink-500 text-transparent">Reach</span>
           </h1>
         </ScrollLink>
 
-        {/* Desktop Nav Links */}
-        <ul className="hidden md:flex space-x-8 items-center">
+        {/* Desktop Nav */}
+        <ul className="hidden md:flex space-x-8">
           {navLinks.map((item) => (
             <li key={item.id}>
               <ScrollLink
                 to={item.link}
-                className="text-sm font-medium bg-gradient-to-r from-blue-400 to-pink-500 text-transparent bg-clip-text hover:text-gray-400 transition cursor-pointer"
-                activeClass="active"
+                className="text-sm sm:text-base font-semibold bg-gradient-to-r from-blue-400 to-pink-500 text-transparent bg-clip-text hover:opacity-90 transition cursor-pointer"
+                activeClass="opacity-100 underline decoration-pink-500 underline-offset-4"
                 spy={true}
                 smooth={true}
                 offset={-100}
@@ -67,27 +54,18 @@ const Navbar = () => {
           ))}
         </ul>
 
-        {/* Right Side: Dark Mode + Mobile Menu */}
-        <div className="flex items-center gap-3">
-          {/* Dark Mode Toggle */}
+        {/* Mobile Menu Button */}
+        <div className="flex items-center md:hidden">
           <button
-            onClick={toggleDarkMode}
-            className="text-white border border-white/20 rounded-full p-2 hover:bg-white/10 transition"
-            aria-label="Toggle Dark Mode"
-          >
-            {darkMode ? <BsSun size={18} /> : <BsMoon size={18} />}
-          </button>
-
-          {/* Burger Button (Mobile) */}
-          <button
-            className="text-white md:hidden"
+            className="p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500"
             onClick={toggleMenu}
             aria-label="Toggle Menu"
+            aria-expanded={isOpen}
           >
             <Lottie
               lottieRef={lottieRef}
               animationData={burgerAnimation}
-              style={{ height: 30 }}
+              style={{ height: 36, width: 36 }}
               loop={false}
               autoplay={false}
             />
@@ -95,19 +73,19 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Mobile Nav Links */}
+      {/* Mobile Nav Dropdown */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-500 ${
-          isOpen ? "max-h-40 py-4" : "max-h-0"
+        className={`md:hidden transition-[max-height,padding] duration-500 ease-in-out overflow-hidden ${
+          isOpen ? "max-h-48 py-4" : "max-h-0 py-0"
         }`}
       >
-        <ul className="flex flex-col items-center space-y-4 bg-white/10 dark:bg-black/30 rounded-xl mx-6 mt-2 py-2">
+        <ul className="flex flex-col items-center space-y-4 bg-white/20 dark:bg-black/40 rounded-xl mx-6 mt-3 py-3 px-4 shadow-md">
           {navLinks.map((item) => (
-            <li key={item.id}>
+            <li key={item.id} className="w-full text-center">
               <ScrollLink
                 to={item.link}
-                className="text-sm font-medium bg-gradient-to-r from-blue-400 to-pink-500 text-transparent bg-clip-text hover:text-gray-400 transition cursor-pointer"
-                activeClass="active"
+                className="block w-full text-base font-semibold bg-gradient-to-r from-blue-400 to-pink-500 text-transparent bg-clip-text hover:opacity-90 transition cursor-pointer"
+                activeClass="opacity-100 underline decoration-pink-500 underline-offset-4"
                 spy={true}
                 smooth={true}
                 offset={-100}
@@ -120,7 +98,7 @@ const Navbar = () => {
           ))}
         </ul>
       </div>
-    </div>
+    </header>
   );
 };
 

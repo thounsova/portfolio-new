@@ -6,7 +6,6 @@ import Hero from "../components/Hero";
 import Projects from "../components/Projects";
 import Qualification from "../components/Qualification";
 import Tow from "../components/project-two";
-
 import Skills from "../components/Skills";
 import Aboutone from "../components/aboutone";
 import Card from "../components/deloper";
@@ -23,6 +22,7 @@ function HomePage() {
         <Hero />
         <About />
         <Aboutone />
+
         <Skills />
         <Card />
 

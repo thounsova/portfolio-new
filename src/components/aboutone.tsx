@@ -1,9 +1,13 @@
+import React from "react";
+
 const FaCode = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     fill="currentColor"
     className="w-6 h-6"
+    width="24"
+    height="24"
   >
     <path
       fillRule="evenodd"
@@ -12,12 +16,15 @@ const FaCode = () => (
     />
   </svg>
 );
+
 const FaPaintBrush = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     fill="currentColor"
     className="w-6 h-6"
+    width="24"
+    height="24"
   >
     <path
       fillRule="evenodd"
@@ -26,12 +33,15 @@ const FaPaintBrush = () => (
     />
   </svg>
 );
+
 const FaRocket = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     fill="currentColor"
     className="w-6 h-6"
+    width="24"
+    height="24"
   >
     <path d="M12 2.25a.75.75 0 01.75.75v4.5a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM11.25 7.5v5.69l-1.921 1.921a.75.75 0 001.06 1.06l2.426-2.426a.25.25 0 00.07-.189V7.5h-1.5zM12.75 7.5v5.69l1.921 1.921a.75.75 0 11-1.06 1.06l-2.426-2.426a.25.25 0 01-.07-.189V7.5h1.5zM4.773 17.553a.75.75 0 00.954 1.154l3.197-2.558c.28-.224.542-.487.794-.768l-3.197-2.558a.75.75 0 00-.954 1.154l1.393 1.115c-.09.117-.184.23-.284.34L4.773 17.553zM18.427 17.553a.75.75 0 01-.954 1.154l-3.197-2.558a.75.75 0 01-.794-.768l3.197-2.558a.75.75 0 01.954 1.154l-1.393 1.115c.09.117.184.23.284.34l3.197 2.558zM6.75 19.5c0 1.147.234 2.247.653 3.25h10.394c.419-1.003.653-2.103.653-3.25 0-2.645-2.203-4.825-4.787-4.825H11.53c-2.584 0-4.787 2.18-4.787 4.825z" />
   </svg>
@@ -41,30 +51,43 @@ export default function AboutMe() {
   return (
     <section
       id="about"
-      className="relative z-10 px-6 py-16 text-white overflow-hidden " // Added a background color for consistency
+      className="relative z-10 px-6 py-16 text-white overflow-hidden bg-gray-900"
     >
-      {/* Background Colorful Blur Circles */}
+      {/* Animated Background Colorful Blur Circles */}
       <div
-        className="absolute top-10 left-10 w-40 h-40 rounded-full blur-3xl opacity-70"
+        className="absolute top-10 left-10 w-40 h-40 rounded-full opacity-70 animate-pulse-slow"
         style={{
           background:
             "radial-gradient(circle at center, #9f7aea80, transparent 70%)",
           filter: "blur(60px)",
+          animationTimingFunction: "ease-in-out",
         }}
       />
       <div
-        className="absolute bottom-10 right-10 w-52 h-52 rounded-full blur-3xl opacity-70"
+        className="absolute bottom-10 right-10 w-52 h-52 rounded-full opacity-70 animate-pulse-slow delay-2000"
         style={{
           background:
             "radial-gradient(circle at center, #6b46c180, transparent 70%)",
           filter: "blur(80px)",
+          animationTimingFunction: "ease-in-out",
         }}
       />
 
+      <style>{`
+        @keyframes pulseSlow {
+          0%, 100% { opacity: 0.7; transform: scale(1); }
+          50% { opacity: 0.4; transform: scale(1.1); }
+        }
+        .animate-pulse-slow {
+          animation: pulseSlow 6s infinite;
+        }
+        .delay-2000 {
+          animation-delay: 2s;
+        }
+      `}</style>
+
       {/* Section Content */}
       <div className="max-w-7xl mx-auto backdrop-blur-sm">
-        {" "}
-        {/* Added backdrop-blur-sm */}
         <h2 className="text-4xl font-bold text-center text-purple-400 mb-4">
           About Me
         </h2>
@@ -72,9 +95,10 @@ export default function AboutMe() {
           Passionate developer with 5+ years of experience creating digital
           solutions that make a difference.
         </p>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {/* Left Side: Story */}
-          <div className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-md shadow-lg">
+          <div className="bg-white/5 border border-purple-500 rounded-2xl p-6 backdrop-blur-md shadow-[0_0_20px_3px_rgba(159,122,234,0.5)] hover:shadow-[0_0_40px_8px_rgba(159,122,234,0.8)] transition-shadow duration-500">
             <h3 className="text-2xl font-semibold mb-4">My Story</h3>
             <p className="text-gray-300 mb-4">
               I started my journey in web development 5 years ago, driven by
@@ -92,8 +116,8 @@ export default function AboutMe() {
           {/* Right Side: Feature Cards */}
           <div className="flex flex-col gap-6">
             {/* Card 1 */}
-            <div className="flex items-start gap-4 bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur-md shadow-md hover:shadow-lg transition">
-              <div className="p-3 rounded-xl bg-purple-600/20 text-purple-400 text-xl">
+            <div className="flex items-start gap-4 bg-white/5 border border-purple-500 rounded-2xl p-5 backdrop-blur-md shadow-[0_0_15px_3px_rgba(159,122,234,0.4)] hover:shadow-[0_0_30px_6px_rgba(159,122,234,0.7)] transition-shadow duration-500">
+              <div className="p-3 rounded-xl bg-purple-600/30 text-purple-400 text-3xl flex items-center justify-center min-w-[48px] min-h-[48px]">
                 <FaCode />
               </div>
               <div>
@@ -106,8 +130,8 @@ export default function AboutMe() {
             </div>
 
             {/* Card 2 */}
-            <div className="flex items-start gap-4 bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur-md shadow-md hover:shadow-lg transition">
-              <div className="p-3 rounded-xl bg-purple-600/20 text-purple-400 text-xl">
+            <div className="flex items-start gap-4 bg-white/5 border border-purple-500 rounded-2xl p-5 backdrop-blur-md shadow-[0_0_15px_3px_rgba(159,122,234,0.4)] hover:shadow-[0_0_30px_6px_rgba(159,122,234,0.7)] transition-shadow duration-500">
+              <div className="p-3 rounded-xl bg-purple-600/30 text-purple-400 text-3xl flex items-center justify-center min-w-[48px] min-h-[48px]">
                 <FaPaintBrush />
               </div>
               <div>
@@ -120,8 +144,8 @@ export default function AboutMe() {
             </div>
 
             {/* Card 3 */}
-            <div className="flex items-start gap-4 bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur-md shadow-md hover:shadow-lg transition">
-              <div className="p-3 rounded-xl bg-purple-600/20 text-purple-400 text-xl">
+            <div className="flex items-start gap-4 bg-white/5 border border-purple-500 rounded-2xl p-5 backdrop-blur-md shadow-[0_0_15px_3px_rgba(159,122,234,0.4)] hover:shadow-[0_0_30px_6px_rgba(159,122,234,0.7)] transition-shadow duration-500">
+              <div className="p-3 rounded-xl bg-purple-600/30 text-purple-400 text-3xl flex items-center justify-center min-w-[48px] min-h-[48px]">
                 <FaRocket />
               </div>
               <div>
