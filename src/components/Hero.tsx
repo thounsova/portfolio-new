@@ -79,7 +79,7 @@ export default function Hero3D() {
       </div>
        <div className="flex justify-center gap-6 text-white text-2xl  p-2">
           <a
-            href="https://github.com/your-github-username"
+            href="https://github.com/thounsova"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
@@ -88,7 +88,7 @@ export default function Hero3D() {
             <FaGithub />
           </a>
           <a
-            href="https://facebook.com/your-facebook-username"
+            href="https://www.facebook.com/share/15kWX79JQ9/?mibextid=wwXIfr"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Facebook"
